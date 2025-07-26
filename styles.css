@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 html {
@@ -13,9 +14,28 @@ body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #000;
-    /* All text is black by default */
     background-color: #ffffff;
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Preloader styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s;
+}
+
+#preloader img {
+    width: 64px;
+    height: 64px;
 }
 
 /* Dark Mode Styles */
@@ -23,7 +43,6 @@ body {
     body {
         background-color: #121212;
         color: #e0e0e0;
-        /* Light gray for dark mode text */
     }
 
     .navbar,
@@ -43,7 +62,6 @@ body {
     .footer-section h4,
     .form-group label {
         color: #e0e0e0;
-        /* Light gray for dark mode text */
     }
 
     .hero-title {
@@ -55,7 +73,6 @@ body {
 
     .hero-subtitle {
         color: #f0f0f0;
-        /* Lighter gray for dark mode subtitle */
     }
 
     .hero-description,
@@ -69,7 +86,6 @@ body {
     .form-group input,
     .form-group textarea {
         color: #b0b0b0;
-        /* Medium gray for dark mode text */
     }
 
     .btn-primary {
@@ -100,7 +116,6 @@ body {
 
     .contact-form {
         background-color: #1a1a1a;
-        /* Dark mode for contact form */
     }
 
     .form-group input,
@@ -113,42 +128,6 @@ body {
     .form-group textarea:focus {
         border-color: #e0e0e0;
     }
-
-    /* .social-icon { */
-    filter: grayscale(0%);
-    Original color in dark mode background-color: #ffffff
-    White background for icons in dark mode
-}
-
-.social-icon i {
-    color: #00000000;
-    Black icon in dark mode
-}
-
-.threads{
-
-}
-.twitter {
-    filter: invert(0);
-
-    /* Original color for threads/twitter in dark mode */
-}
-
-.footer {
-    background-color: #000;
-    /* Black footer in dark mode */
-    color: white;
-}
-
-.footer-section h3,
-.footer-section h4 {
-    color: white;
-}
-
-.footer-section p,
-.footer-section ul li a {
-    color: #ccc;
-}
 }
 
 .container {
@@ -169,7 +148,6 @@ h6 {
     line-height: 1.2;
     margin-bottom: 1rem;
     color: #000;
-    /* Ensure all headings are black */
 }
 
 h1 {
@@ -191,7 +169,6 @@ h4 {
 p {
     margin-bottom: 1rem;
     color: #000;
-    /* Ensure all paragraphs are black */
 }
 
 /* Buttons */
@@ -203,15 +180,19 @@ p {
     font-weight: 600;
     text-align: center;
     transition: all 0.3s ease;
-    /* Smooth hover effect */
     border: none;
     cursor: pointer;
     font-size: 1rem;
 }
 
 .btn-primary {
-    background-color: #000;
-    color: white;
+    background-color: #2FBB1C;
+    color: #fff;
+}
+
+.btn-get {
+    background-color: #272727;
+    color: #fff;
 }
 
 .btn-primary:hover {
@@ -228,7 +209,7 @@ p {
 
 .btn-secondary:hover {
     background-color: #000;
-    color: white;
+    color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -236,29 +217,25 @@ p {
 /* Top Announcement Bar */
 .top-announcement {
     background-color: #000;
-    color: white;
+    color: #fff;
     text-align: center;
     padding: 0.5rem 0;
     font-size: 0.9rem;
     justify-content: center;
     display: flex;
     gap: 10px;
-
 }
 
 /* Search Bar */
 .search-bar-container {
     background-color: #f8f9fa;
     padding: 1rem 20px;
-    /* Added padding for right alignment */
     display: flex;
     justify-content: flex-end;
-    /* Align to right */
 }
 
 .search-bar {
     max-width: 300px;
-    /* Smaller width for right corner */
     position: relative;
 }
 
@@ -269,7 +246,6 @@ p {
     border: 1px solid #ccc;
     font-size: 1rem;
     color: #000;
-    /* Ensure search input text is black */
 }
 
 .search-icon {
@@ -278,7 +254,6 @@ p {
     top: 50%;
     transform: translateY(-50%);
     color: #000;
-    /* Ensure search icon is black */
     cursor: pointer;
 }
 
@@ -332,16 +307,13 @@ p {
 .nav-link {
     text-decoration: none;
     color: #000;
-    /* Ensure nav links are black */
     font-weight: 500;
     transition: color 0.3s ease;
-    /* Smooth hover effect */
     position: relative;
 }
 
 .nav-link:hover {
     color: #333;
-    /* Darker on hover */
 }
 
 .nav-link::after {
@@ -353,7 +325,6 @@ p {
     left: 0;
     background-color: #000;
     transition: width 0.3s ease;
-    /* Smooth hover effect */
 }
 
 .nav-link:hover::after {
@@ -365,7 +336,7 @@ p {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: white;
+    background-color: #fff;
     list-style: none;
     padding: 1rem;
     border-radius: 5px;
@@ -391,14 +362,11 @@ p {
 .submenu li a {
     text-decoration: none;
     color: #000;
-    /* Ensure submenu links are black */
     transition: color 0.3s ease;
-    /* Smooth hover effect */
 }
 
 .submenu li a:hover {
     color: #333;
-    /* Darker on hover */
 }
 
 .hamburger {
@@ -449,7 +417,6 @@ p {
 .hero-subtitle {
     font-size: 1.5rem;
     color: #000;
-    /* Changed to black */
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -457,7 +424,6 @@ p {
 .hero-description {
     font-size: 1.2rem;
     color: #000;
-    /* Changed to black */
     margin-bottom: 2rem;
     line-height: 1.8;
 }
@@ -494,13 +460,11 @@ section {
 .section-title {
     margin-bottom: 1rem;
     color: #000;
-    /* Ensure section titles are black */
 }
 
 .section-subtitle {
     font-size: 1.2rem;
     color: #000;
-    /* Changed to black */
     max-width: 600px;
     margin: 0 auto;
 }
@@ -515,6 +479,7 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    padding-left: 15px;
 }
 
 .about-text p {
@@ -523,7 +488,6 @@ section {
     margin-bottom: 1.5rem;
     text-align: justify;
     color: #000;
-    /* Ensure about text is black */
 }
 
 .about-img {
@@ -556,7 +520,7 @@ section {
     width: auto;
     padding: 16px;
     margin-top: -22px;
-    color: white;
+    color: #fff;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
@@ -608,17 +572,17 @@ section {
 /* Services Section */
 .services {
     background-color: #fff;
-    /* Changed to white */
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 15px;
 }
 
 .service-card {
-    background: white;
+    background: #fff;
     padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -644,18 +608,16 @@ section {
 
 .service-icon i {
     font-size: 2rem;
-    color: white;
+    color: #fff;
 }
 
 .service-title {
     margin-bottom: 1rem;
     color: #000;
-    /* Ensure service titles are black */
 }
 
 .service-description {
     color: #000;
-    /* Changed to black */
     line-height: 1.6;
 }
 
@@ -668,10 +630,11 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    padding: 15px;
 }
 
 .skill-item {
-    background: white;
+    background: #fff;
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
@@ -696,18 +659,16 @@ section {
 
 .skill-icon i {
     font-size: 1.5rem;
-    color: white;
+    color: #fff;
 }
 
 .skill-item h4 {
     margin-bottom: 0.5rem;
     color: #000;
-    /* Ensure skill item headings are black */
 }
 
 .skill-item p {
     color: #000;
-    /* Changed to black */
     font-size: 0.9rem;
     margin: 0;
 }
@@ -715,17 +676,17 @@ section {
 /* Testimonials Section */
 .testimonials {
     background-color: #fff;
-    /* Changed to white */
 }
 
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 15px;
 }
 
 .testimonial-card {
-    background: white;
+    background: #fff;
     padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -745,14 +706,12 @@ section {
 .testimonial-content p {
     font-style: italic;
     color: #000;
-    /* Changed to black */
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
 
 .testimonial-author h4 {
     color: #000;
-    /* Ensure testimonial author is black */
     margin: 0;
 }
 
@@ -766,7 +725,6 @@ section {
     display: flex;
     animation: scroll 30s linear infinite;
     white-space: nowrap;
-    /* Ensure logos stay in one line */
 }
 
 .partners-carousel a {
@@ -780,7 +738,6 @@ section {
     border-radius: 50%;
     object-fit: cover;
     filter: grayscale(0%);
-    /* Original color */
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
@@ -802,15 +759,12 @@ section {
 /* Contact Section */
 .contact {
     background-color: #fff;
-    /* White background for contact section */
     color: #000;
-    /* Black text for contact section */
 }
 
 .contact .section-title,
 .contact .section-subtitle {
     color: #000;
-    /* Black text for contact section titles */
 }
 
 .contact-content {
@@ -823,13 +777,13 @@ section {
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+    padding-left: 15px;
 }
 
 .contact-icon {
     width: 50px;
     height: 50px;
-    background: white;
-    /* White background for contact icons */
+    background: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -839,36 +793,35 @@ section {
 
 .contact-icon i {
     color: #000;
-    /* Black icon */
     font-size: 1.2rem;
 }
 
 .contact-details h4 {
     margin-bottom: 0.5rem;
     color: #000;
-    /* Black text for contact details heading */
 }
 
 .contact-details p {
     margin: 0;
     color: #000;
-    /* Black text for contact details */
 }
 
 .social-media {
     margin-top: 2rem;
+    align-items: center;
 }
 
 .social-media h4 {
     margin-bottom: 1rem;
     color: #000;
-    /* Black text for social media heading */
+    text-align: center;
 }
 
 .social-icons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .social-icon {
@@ -881,27 +834,22 @@ section {
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #1b1b1b;
-    /* White background for social icons */
 }
 
 .social-icon i {
     color: #000;
-    /* Black icon */
     font-size: 1.2rem;
 }
 
 .social-icon:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    /* Adjusted shadow for black background */
 }
 
-/* Specific social media icons to ensure visibility */
 .threads i,
 .twitter i,
 .snapchat i {
     filter: invert(0);
-    /* Ensure original color for these icons */
 }
 
 .social-icon.threads i,
@@ -912,11 +860,9 @@ section {
 /* Contact Form */
 .contact-form {
     background: #000;
-    /* Black background for contact form */
     padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    /* Darker shadow for black background */
 }
 
 .form-group {
@@ -926,8 +872,7 @@ section {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: white;
-    /* White label text for black background */
+    color: #fff;
     font-weight: 600;
 }
 
@@ -939,10 +884,8 @@ section {
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
-    background-color: white;
-    /* White background for input fields */
+    background-color: #fff;
     color: #000;
-    /* Black text for user input */
 }
 
 .form-group input:focus,
@@ -965,18 +908,15 @@ section {
     right: 40px;
     background-color: #25d366;
     background-image: url(assets/images/whatsapp\ floating\ button.jpg);
-    /* color: #ffffff; */
     border-radius: 50px;
     text-align: center;
     font-size: 35px;
-
     box-shadow: 2px 2px 3px #999;
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
-    /* Smooth hover effect */
 }
 
 .whatsapp-float:hover {
@@ -986,8 +926,7 @@ section {
 /* Footer */
 .footer {
     background-color: #1f1f1f;
-    /* Black footer */
-    color: white;
+    color: #fff;
     padding: 3rem 0 1rem;
 }
 
@@ -996,6 +935,7 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    padding-inline: 15px;
 }
 
 .footer-section h3,
@@ -1021,7 +961,6 @@ section {
     color: #ccc;
     text-decoration: none;
     transition: color 0.3s ease;
-    /* Smooth hover effect */
 }
 
 .footer-section ul li a:hover {
@@ -1035,9 +974,9 @@ section {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid #444;
-    color: #ccc;
+    border-top: 1px solid #fff;
+    color: #fff;
+    background-color: #e5e4e4;
 }
 
 /* Responsive Design */
@@ -1047,7 +986,7 @@ section {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: white;
+        background-color: #fff;
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -1159,13 +1098,12 @@ section {
 section {
     scroll-margin-top: 80px;
 }
-.flag{
-    background-color: #00fe5d;
+
+.flag {
+    background-color: #000;
     background-image: url(assets/images/pakistan\ flag.jpg);
     width: 25px;
     height: 20px;
     justify-content: center;
     display: flex;
-
-    
 }
