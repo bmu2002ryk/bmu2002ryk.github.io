@@ -41,7 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
             dots[slideIndex - 1].className += " active";
         }
     }
-
+  setInterval(() => {
+        plusSlides(1);
+    }, 5000)
     // Contact Form to WhatsApp
     const contactForm = document.getElementById("contactForm");
     contactForm.addEventListener("submit", function (e) {
@@ -3767,4 +3769,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
 
